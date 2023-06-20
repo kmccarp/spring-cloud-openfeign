@@ -51,15 +51,12 @@ class FallbackSupportFactoryBeanTests {
 			.withBean(CircuitBreakerFactory.class, () -> new CircuitBreakerFactory() {
 				@Override
 				public CircuitBreaker create(String id) {
-					return new CircuitBreaker() {
-						@Override
-						public <T> T run(Supplier<T> toRun, Function<Throwable, T> fallback) {
-							try {
-								return toRun.get();
-							}
-							catch (Throwable t) {
-								return fallback.apply(t);
-							}
+					return (toRun, fallback) -> {
+						try {
+							return toRun.get();
+						}
+						catch (Throwable t) {
+							return fallback.apply(t);
 						}
 					};
 				}

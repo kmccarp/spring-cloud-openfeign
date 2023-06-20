@@ -111,7 +111,7 @@ class FeignClientFactoryTest {
 
 		@Bean
 		public RequestInterceptor requestInterceptor() {
-			return (requestTemplate) -> {
+			return requestTemplate -> {
 			};
 		}
 

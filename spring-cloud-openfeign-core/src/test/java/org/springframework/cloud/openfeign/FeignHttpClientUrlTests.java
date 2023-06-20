@@ -21,7 +21,6 @@ import java.util.Objects;
 
 import feign.Client;
 import feign.Feign;
-import feign.Target;
 import feign.hc5.ApacheHttp5Client;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -151,18 +150,14 @@ class FeignHttpClientUrlTests {
 
 		@Bean
 		public Targeter feignTargeter() {
-			return new Targeter() {
-				@Override
-				public <T> T target(FeignClientFactoryBean factory, Feign.Builder feign, FeignClientFactory context,
-						Target.HardCodedTarget<T> target) {
-					Field field = ReflectionUtils.findField(Feign.Builder.class, "client");
-					ReflectionUtils.makeAccessible(field);
-					Client client = (Client) ReflectionUtils.getField(field, feign);
-					if (target.name().equals("localappurl")) {
-						assertThat(client).isInstanceOf(ApacheHttp5Client.class).as("client was wrong type");
-					}
-					return feign.target(target);
+			return (factory, feign, context, target) -> {
+				Field field = ReflectionUtils.findField(Feign.Builder.class, "client");
+				ReflectionUtils.makeAccessible(field);
+				Client client = (Client) ReflectionUtils.getField(field, feign);
+				if ("localappurl".equals(target.name())) {
+					assertThat(client).isInstanceOf(ApacheHttp5Client.class).as("client was wrong type");
 				}
+				return feign.target(target);
 			};
 		}
 

@@ -88,7 +88,7 @@ public class FeignClientBeanFactoryInitializationAotProcessor
 	private Map<String, BeanDefinition> getFeignClientBeanDefinitions(FeignClientFactory feignClientFactory) {
 		Map<String, FeignClientSpecification> configurations = feignClientFactory.getConfigurations();
 		return configurations.values().stream().map(FeignClientSpecification::getClassName).filter(Objects::nonNull)
-				.filter(className -> !className.equals("default"))
+				.filter(className -> !"default".equals(className))
 				.map(className -> Map.entry(className, context.getBeanDefinition(className)))
 				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 	}
