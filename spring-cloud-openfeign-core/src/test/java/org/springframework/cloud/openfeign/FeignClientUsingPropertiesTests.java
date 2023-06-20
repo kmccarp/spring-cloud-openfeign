@@ -96,7 +96,7 @@ public class FeignClientUsingPropertiesTests {
 	private ApplicationContext applicationContext;
 
 	@Value("${local.server.port}")
-	private int port = 0;
+	private int port;
 
 	private FeignClientFactoryBean fooFactoryBean;
 

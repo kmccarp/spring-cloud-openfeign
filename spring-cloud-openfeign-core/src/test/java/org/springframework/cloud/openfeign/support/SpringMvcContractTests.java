@@ -819,7 +819,7 @@ class SpringMvcContractTests {
 
 		@ExceptionHandler
 		@PutMapping(path = "/testfallback/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-		ResponseEntity<TestObject> getTestFallback(@RequestHeader String Authorization, @PathVariable String id,
+		ResponseEntity<TestObject> getTestFallback(@RequestHeader String authorization, @PathVariable String id,
 				@RequestParam Integer amount);
 
 		@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -898,24 +898,19 @@ class SpringMvcContractTests {
 			if (!Objects.equals(number, that.number)) {
 				return false;
 			}
-			if (!Objects.equals(something, that.something)) {
-				return false;
-			}
-
-			return true;
+			return Objects.equals(something, that.something);
 		}
 
 		@Override
 		public int hashCode() {
-			int result = (something != null ? something.hashCode() : 0);
+			int result = something != null ? something.hashCode() : 0;
 			result = 31 * result + (number != null ? number.hashCode() : 0);
 			return result;
 		}
 
 		@Override
 		public String toString() {
-			return new StringBuilder("TestObject{").append("something='").append(something).append("', ")
-					.append("number=").append(number).append("}").toString();
+			return "TestObject{" + "something='" + something + "', " + "number=" + number + "}";
 		}
 
 	}

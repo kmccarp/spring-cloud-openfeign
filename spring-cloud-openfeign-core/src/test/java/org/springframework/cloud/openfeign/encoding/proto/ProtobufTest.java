@@ -35,12 +35,9 @@ public final class ProtobufTest {
 				\002id\030\001 \001(\005\022\013
 				\003msg\030\002 \001(\tB\024
 				\020feign.httpclientP\001b\006proto3""" };
-		com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-			public com.google.protobuf.ExtensionRegistry assignDescriptors(
-					com.google.protobuf.Descriptors.FileDescriptor root) {
-				descriptor = root;
-				return null;
-			}
+		com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = root -> {
+			descriptor = root;
+			return null;
 		};
 		com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
 				new com.google.protobuf.Descriptors.FileDescriptor[] {}, assigner);
