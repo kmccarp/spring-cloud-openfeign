@@ -148,7 +148,7 @@ class FeignHttpClientTests {
 			if (contentLength <= 0) {
 				throw new IllegalArgumentException("Invalid Content-Length " + contentLength);
 			}
-			if (!hello.getMessage().equals("foo")) {
+			if (!"foo".equals(hello.getMessage())) {
 				throw new IllegalArgumentException("Invalid Hello: " + hello.getMessage());
 			}
 			return ResponseEntity.ok().header("X-Hello", "hello world patch").build();
@@ -242,7 +242,7 @@ class FeignHttpClientTests {
 	static class LocalClientConfiguration {
 
 		@LocalServerPort
-		private int port = 0;
+		private int port;
 
 		@Bean
 		public ServiceInstanceListSupplier staticServiceInstanceListSupplier() {

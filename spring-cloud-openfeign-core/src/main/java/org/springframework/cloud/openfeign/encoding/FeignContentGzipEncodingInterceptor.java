@@ -88,7 +88,7 @@ public class FeignContentGzipEncodingInterceptor extends BaseRequestInterceptor 
 	 * @return true if any specified content type matches the request content types
 	 */
 	private boolean matchesMimeType(Collection<String> contentTypes) {
-		if (contentTypes == null || contentTypes.size() == 0) {
+		if (contentTypes == null || contentTypes.isEmpty()) {
 			return false;
 		}
 
