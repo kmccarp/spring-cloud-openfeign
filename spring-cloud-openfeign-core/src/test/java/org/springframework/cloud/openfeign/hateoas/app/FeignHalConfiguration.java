@@ -24,6 +24,6 @@ import org.springframework.beans.factory.annotation.Value;
 public class FeignHalConfiguration {
 
 	@Value("${local.server.port}")
-	private int serverPort = 0;
+	private int serverPort;
 
 }
