@@ -158,7 +158,7 @@ class FeignHttpClientUrlTests {
 					Field field = ReflectionUtils.findField(Feign.Builder.class, "client");
 					ReflectionUtils.makeAccessible(field);
 					Client client = (Client) ReflectionUtils.getField(field, feign);
-					if (target.name().equals("localappurl")) {
+					if ("localappurl".equals(target.name())) {
 						assertThat(client).isInstanceOf(ApacheHttp5Client.class).as("client was wrong type");
 					}
 					return feign.target(target);
