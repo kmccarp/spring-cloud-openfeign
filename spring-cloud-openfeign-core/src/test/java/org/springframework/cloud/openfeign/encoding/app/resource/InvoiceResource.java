@@ -95,10 +95,10 @@ public class InvoiceResource {
 			Comparator<Invoice> comparatorForSort = null;
 			for (org.springframework.data.domain.Sort.Order order : sort) {
 				Comparator<Invoice> comparatorForOrder;
-				if (order.getProperty().equals("title")) {
+				if ("title".equals(order.getProperty())) {
 					comparatorForOrder = Comparator.comparing(Invoice::getTitle);
 				}
-				else if (order.getProperty().equals("amount")) {
+				else if ("amount".equals(order.getProperty())) {
 					comparatorForOrder = Comparator.comparing(Invoice::getAmount);
 				}
 				else {

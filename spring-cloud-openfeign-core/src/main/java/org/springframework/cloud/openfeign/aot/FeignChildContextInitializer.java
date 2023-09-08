@@ -62,7 +62,7 @@ public class FeignChildContextInitializer implements BeanRegistrationAotProcesso
 	@Override
 	public BeanRegistrationAotContribution processAheadOfTime(RegisteredBean registeredBean) {
 		Assert.isInstanceOf(ConfigurableApplicationContext.class, applicationContext);
-		ConfigurableApplicationContext context = ((ConfigurableApplicationContext) applicationContext);
+		ConfigurableApplicationContext context = (ConfigurableApplicationContext) applicationContext;
 		BeanFactory applicationBeanFactory = context.getBeanFactory();
 		if (!((registeredBean.getBeanClass().equals(FeignClientFactory.class))
 				&& registeredBean.getBeanFactory().equals(applicationBeanFactory))) {

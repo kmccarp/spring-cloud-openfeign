@@ -594,8 +594,7 @@ class ValidFeignClientTests {
 
 		@GetMapping("/hellos")
 		public List<Hello> getHellos() {
-			ArrayList<Hello> hellos = getHelloList();
-			return hellos;
+			return getHelloList();
 		}
 
 		@GetMapping("/hellostrings")
@@ -788,7 +787,7 @@ class ValidFeignClientTests {
 	public static class LocalLoadBalancerClientConfiguration {
 
 		@LocalServerPort
-		private int port = 0;
+		private int port;
 
 		@Bean
 		public ServiceInstanceListSupplier staticServiceInstanceListSupplier() {
