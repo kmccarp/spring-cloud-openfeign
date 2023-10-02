@@ -90,7 +90,7 @@ public class CircuitBreakerWithNoFallbackTests {
 
 	@Test
 	public void test404WithoutFallback() {
-		assertThatThrownBy(() -> testClient.getException()).isInstanceOf(NoFallbackAvailableException.class);
+		assertThatThrownBy(testClient::getException).isInstanceOf(NoFallbackAvailableException.class);
 	}
 
 	@FeignClient(name = "test", url = "http://localhost:${server.port}/")

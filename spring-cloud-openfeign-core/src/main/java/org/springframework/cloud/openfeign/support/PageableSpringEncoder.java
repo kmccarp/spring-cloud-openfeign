@@ -108,7 +108,7 @@ public class PageableSpringEncoder implements Encoder {
 	private void applySort(RequestTemplate template, Sort sort) {
 		Collection<String> existingSorts = template.queries().get("sort");
 		List<String> sortQueries = existingSorts != null ? new ArrayList<>(existingSorts) : new ArrayList<>();
-		if (!sortParameter.equals("sort")) {
+		if (!"sort".equals(sortParameter)) {
 			existingSorts = template.queries().get(sortParameter);
 			if (existingSorts != null) {
 				sortQueries.addAll(existingSorts);

@@ -78,7 +78,7 @@ class OAuth2AccessTokenInterceptorTests {
 	void shouldAcquireValidToken() {
 		oAuth2AccessTokenInterceptor = new OAuth2AccessTokenInterceptor(mockOAuth2AuthorizedClientManager);
 		when(mockOAuth2AuthorizedClientManager.authorize(
-				argThat((OAuth2AuthorizeRequest request) -> ("test").equals(request.getClientRegistrationId()))))
+				argThat((OAuth2AuthorizeRequest request) -> "test".equals(request.getClientRegistrationId()))))
 						.thenReturn(validTokenOAuth2AuthorizedClient());
 
 		oAuth2AccessTokenInterceptor.apply(requestTemplate);
@@ -89,7 +89,7 @@ class OAuth2AccessTokenInterceptorTests {
 	@Test
 	void shouldAcquireValidTokenFromServiceId() {
 		when(mockOAuth2AuthorizedClientManager.authorize(
-				argThat((OAuth2AuthorizeRequest request) -> ("test").equals(request.getClientRegistrationId()))))
+				argThat((OAuth2AuthorizeRequest request) -> "test".equals(request.getClientRegistrationId()))))
 						.thenReturn(validTokenOAuth2AuthorizedClient());
 		oAuth2AccessTokenInterceptor = new OAuth2AccessTokenInterceptor(mockOAuth2AuthorizedClientManager);
 
@@ -103,7 +103,7 @@ class OAuth2AccessTokenInterceptorTests {
 		oAuth2AccessTokenInterceptor = new OAuth2AccessTokenInterceptor(DEFAULT_CLIENT_REGISTRATION_ID,
 				mockOAuth2AuthorizedClientManager);
 		when(mockOAuth2AuthorizedClientManager
-				.authorize(argThat((OAuth2AuthorizeRequest request) -> (DEFAULT_CLIENT_REGISTRATION_ID)
+				.authorize(argThat((OAuth2AuthorizeRequest request) -> DEFAULT_CLIENT_REGISTRATION_ID
 						.equals(request.getClientRegistrationId())))).thenReturn(validTokenOAuth2AuthorizedClient());
 
 		oAuth2AccessTokenInterceptor.apply(requestTemplate);
