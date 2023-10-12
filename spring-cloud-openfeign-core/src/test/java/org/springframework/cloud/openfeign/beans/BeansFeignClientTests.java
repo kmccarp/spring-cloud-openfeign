@@ -57,7 +57,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BeansFeignClientTests {
 
 	@Value("${local.server.port}")
-	private int port = 0;
+	private int port;
 
 	@Autowired
 	private TestClient testClient;

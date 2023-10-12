@@ -111,7 +111,7 @@ public class FeignClientFactoryBean
 
 	private boolean followRedirects = new Request.Options().isFollowRedirects();
 
-	private boolean refreshableClient = false;
+	private boolean refreshableClient;
 
 	private final List<FeignBuilderCustomizer> additionalCustomizers = new ArrayList<>();
 
@@ -656,15 +656,7 @@ public class FeignClientFactoryBean
 
 	@Override
 	public String toString() {
-		return new StringBuilder("FeignClientFactoryBean{").append("type=").append(type).append(", ").append("name='")
-				.append(name).append("', ").append("url='").append(url).append("', ").append("path='").append(path)
-				.append("', ").append("dismiss404=").append(dismiss404).append(", ").append("inheritParentContext=")
-				.append(inheritParentContext).append(", ").append("applicationContext=").append(applicationContext)
-				.append(", ").append("beanFactory=").append(beanFactory).append(", ").append("fallback=")
-				.append(fallback).append(", ").append("fallbackFactory=").append(fallbackFactory).append("}")
-				.append("connectTimeoutMillis=").append(connectTimeoutMillis).append("}").append("readTimeoutMillis=")
-				.append(readTimeoutMillis).append("}").append("followRedirects=").append(followRedirects)
-				.append("refreshableClient=").append(refreshableClient).append("}").toString();
+		return "FeignClientFactoryBean{" + "type=" + type + ", " + "name='" + name + "', " + "url='" + url + "', " + "path='" + path + "', " + "dismiss404=" + dismiss404 + ", " + "inheritParentContext=" + inheritParentContext + ", " + "applicationContext=" + applicationContext + ", " + "beanFactory=" + beanFactory + ", " + "fallback=" + fallback + ", " + "fallbackFactory=" + fallbackFactory + "}" + "connectTimeoutMillis=" + connectTimeoutMillis + "}" + "readTimeoutMillis=" + readTimeoutMillis + "}" + "followRedirects=" + followRedirects + "refreshableClient=" + refreshableClient + "}";
 	}
 
 	@Override
