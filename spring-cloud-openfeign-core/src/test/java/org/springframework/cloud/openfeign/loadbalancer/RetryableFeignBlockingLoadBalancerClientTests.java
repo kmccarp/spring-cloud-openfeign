@@ -124,7 +124,7 @@ class RetryableFeignBlockingLoadBalancerClientTests {
 		verify(loadBalancerClient).reconstructURI(serviceInstance, URI.create("http://test/path"));
 
 		verify(delegate).execute(
-				argThat((Request actualRequest) -> actualRequest.url().equals("http://testhost:80/path")), any());
+				argThat((Request actualRequest) -> "http://testhost:80/path".equals(actualRequest.url())), any());
 	}
 
 	private Response testResponse(int status) {

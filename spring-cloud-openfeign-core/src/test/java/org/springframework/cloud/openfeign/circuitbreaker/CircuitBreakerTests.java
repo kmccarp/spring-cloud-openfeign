@@ -117,12 +117,12 @@ class CircuitBreakerTests {
 	@Test
 	void testRuntimeExceptionUnwrapped() {
 		assertThatExceptionOfType(UnsupportedOperationException.class)
-				.isThrownBy(() -> exceptionClient.getRuntimeException());
+				.isThrownBy(exceptionClient::getRuntimeException);
 	}
 
 	@Test
 	void testCheckedExceptionWrapped() {
-		assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() -> exceptionClient.getCheckedException());
+		assertThatExceptionOfType(IllegalStateException.class).isThrownBy(exceptionClient::getCheckedException);
 	}
 
 	@FeignClient(name = "test", url = "http://localhost:${server.port}/", fallback = Fallback.class)

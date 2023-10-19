@@ -31,7 +31,7 @@ public class FeignEncoderProperties {
 	 * Indicates whether the charset should be derived from the {@code Content-Type}
 	 * header.
 	 */
-	private boolean charsetFromContentType = false;
+	private boolean charsetFromContentType;
 
 	public boolean isCharsetFromContentType() {
 		return charsetFromContentType;

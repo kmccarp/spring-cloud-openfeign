@@ -67,7 +67,7 @@ public final class Request extends com.google.protobuf.GeneratedMessageV3 implem
 			com.google.protobuf.ExtensionRegistryLite extensionRegistry)
 			throws com.google.protobuf.InvalidProtocolBufferException {
 		this();
-		int mutable_bitField0_ = 0;
+		int mutableBitField0 = 0;
 		com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet.newBuilder();
 		try {
 			boolean done = false;
@@ -77,11 +77,6 @@ public final class Request extends com.google.protobuf.GeneratedMessageV3 implem
 					case 0:
 						done = true;
 						break;
-					default:
-						if (!parseUnknownFieldProto3(input, unknownFields, extensionRegistry, tag)) {
-							done = true;
-						}
-						break;
 					case 8:
 						this.id_ = input.readInt32();
 						break;
@@ -89,6 +84,10 @@ public final class Request extends com.google.protobuf.GeneratedMessageV3 implem
 						String s = input.readStringRequireUtf8();
 						this.msg_ = s;
 						break;
+					default:
+						if (!parseUnknownFieldProto3(input, unknownFields, extensionRegistry, tag)) {
+							done = true;
+						}
 				}
 			}
 		}
